@@ -428,23 +428,29 @@ Overall, the experiment established that a synchronization mechanism must be sel
 ```text
 PGC-04-Synchronization-Mechanisms-Analysis/
 │
-├── race.c                   # Demonstrates a race condition
-├── critical.c               # Protects updates using a critical section
-├── atomic.c                 # Uses atomic operations
-├── barrier.c                # Demonstrates thread synchronization at a barrier
-├── semaphore.c              # Uses POSIX threads and a semaphore
-├── compare_sync.c           # Benchmarks synchronization mechanisms
-├── results.txt              # Recorded benchmark output, if included
-│
 ├── src/
-│   ├── race.c         # Race-condition execution
-│   ├── critical.jpeg        # Critical-section execution
-│   ├── atomic.jpeg          # Atomic-operation execution
-│   ├── barrier.jpeg         # Barrier execution
-│   ├── semaphore.jpeg       # Semaphore execution
-│   ├── comparison.jpeg      # Main benchmark results
-│   └── result.jpeg          # Additional benchmark run
+│   ├── atomic.c
+│   ├── barrier.c
+│   ├── compare_sync.c
+│   ├── critical.c
+│   ├── race.c
+│   └── semaphore.c
 │
-└── README.md                # Experiment documentation
+├── performance-analysis/
+│   ├── exec_vs_no-threads.png   
+│   ├── execution_time.png
+│   ├── racecondition.png
+│   └── result.jpeg
+│
+├── screenshots/
+│   ├── atomic.jpeg
+│   ├── barrier.jpeg
+│   ├── comparison.jpeg
+│   ├── critical.jpeg
+│   ├── race.jpeg
+│   ├── result.jpeg
+│   └── semaphore.jpeg
+│
+└── README.md
 ```
 
