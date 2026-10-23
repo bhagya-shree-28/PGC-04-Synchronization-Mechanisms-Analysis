@@ -276,6 +276,7 @@ The standalone programs use OpenMP parallel loops. The comparison benchmark expl
 ### 7.1 Individual Program Results
 
 The following results were observed.
+<img width="786" height="568" alt="result" src="https://github.com/user-attachments/assets/ae65eba3-2b62-4047-a63f-dff602c1978b" />
 
 | Program | Expected result | Observed result | Interpretation |
 |---|---:|---:|---|
@@ -317,26 +318,42 @@ The workload is `10000000` shared increments.
 - The single-thread run produced the correct result because there was no concurrent update race.
 - With multiple threads, the final count became incorrect.
 - At eight threads, the recorded count was only `1995492`, demonstrating significant lost updates.
+<img width="1600" height="633" alt="race" src="https://github.com/user-attachments/assets/b59405c4-99be-4b50-823a-f4b4e4d817cb" />
+
+
 
 **Critical section**
 
 - Produced the correct final count for all tested thread counts.
 - Execution time increased substantially with additional threads because access to the shared counter was serialized.
+<img width="786" height="287" alt="critical" src="https://github.com/user-attachments/assets/97b148ec-d316-473a-8f83-72d300f00a64" />
+
+
+
 
 **Atomic operation**
 
 - Produced the correct result for all tested thread counts.
 - Was faster than both the critical section and the OpenMP lock in the recorded multithreaded benchmark.
 
+<img width="749" height="301" alt="atomic" src="https://github.com/user-attachments/assets/34419550-ee9d-4909-937c-87f33767aa86" />
+
+
 **Barrier**
 
 - Demonstrated synchronization between execution phases.
 - The output order varied because thread scheduling is nondeterministic.
+<img width="786" height="567" alt="barrier" src="https://github.com/user-attachments/assets/6edd6918-13a2-40d5-b648-bfbfe7047859" />
+
+
 
 **Semaphore**
 
 - Produced the correct result of `200000`.
 - Demonstrated mutual exclusion using a binary semaphore initialized to one.
+<img width="786" height="512" alt="semaphore" src="https://github.com/user-attachments/assets/767823ad-f7dd-4ba3-823e-88299429e89c" />
+
+
 
 ## 8. Performance Comparison
 
@@ -348,6 +365,7 @@ The workload is `10000000` shared increments.
 | 2 | 0.0115 | 0.3513 | 0.1837 | 0.3681 |
 | 4 | 0.0136 | 0.6616 | 0.1980 | 1.1201 |
 | 8 | 0.0140 | 0.7128 | 0.2119 | 1.1376 |
+<img width="474" height="291" alt="exec_vs_no-threads" src="https://github.com/user-attachments/assets/f2d92975-4c12-4598-8304-b5a9dee18e8b" />
 
 The unsynchronized program is the fastest in the recorded runs, but its multithreaded results are incorrect. Therefore, its low execution time does not represent a valid performance improvement.
 
@@ -387,6 +405,7 @@ The benchmark shows that adding threads does not necessarily improve performance
 The benchmark measures elapsed time and correctness, not CPU utilization or hardware-counter events. Consequently, the results demonstrate observed performance and contention but do not independently establish the exact hardware-level cause of every timing difference.
 
 ### 8.4 Overall Comparison
+<img width="535" height="291" alt="execution_time" src="https://github.com/user-attachments/assets/9d7b367f-7db4-4f52-84dc-35591d74a665" />
 
 | Mechanism | Correctness | Relative performance in this experiment | Suitability |
 |---|---|---|---|
@@ -408,7 +427,7 @@ Overall, the experiment established that a synchronization mechanism must be sel
 ## 10. Repository Structure
 
 ```text
-Exp5_Synchronization/
+PGC-04-Synchronization-Mechanisms-Analysis/
 │
 ├── race.c                   # Demonstrates a race condition
 ├── critical.c               # Protects updates using a critical section
@@ -418,8 +437,8 @@ Exp5_Synchronization/
 ├── compare_sync.c           # Benchmarks synchronization mechanisms
 ├── results.txt              # Recorded benchmark output, if included
 │
-├── synchronization(lab4)/
-│   ├── race.jpeg            # Race-condition execution
+├── src/
+│   ├── race.c         # Race-condition execution
 │   ├── critical.jpeg        # Critical-section execution
 │   ├── atomic.jpeg          # Atomic-operation execution
 │   ├── barrier.jpeg         # Barrier execution
