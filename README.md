@@ -276,7 +276,6 @@ The standalone programs use OpenMP parallel loops. The comparison benchmark expl
 ### 7.1 Individual Program Results
 
 The following results were observed.
-<img width="786" height="568" alt="result" src="https://github.com/user-attachments/assets/ae65eba3-2b62-4047-a63f-dff602c1978b" />
 
 | Program | Expected result | Observed result | Interpretation |
 |---|---:|---:|---|
@@ -291,6 +290,7 @@ The following results were observed.
 ### 7.2 Benchmark Results
 
 The workload is `10000000` shared increments.
+<img width="786" height="568" alt="result" src="https://github.com/user-attachments/assets/ae65eba3-2b62-4047-a63f-dff602c1978b" />
 
 | Mechanism | Threads | Final Count | Correctness | Time (s) |
 |---|---:|---:|---|---:|
@@ -317,7 +317,6 @@ The workload is `10000000` shared increments.
 
 - The single-thread run produced the correct result because there was no concurrent update race.
 - With multiple threads, the final count became incorrect.
-- At eight threads, the recorded count was only `1995492`, demonstrating significant lost updates.
 <img width="1600" height="633" alt="race" src="https://github.com/user-attachments/assets/b59405c4-99be-4b50-823a-f4b4e4d817cb" />
 
 
