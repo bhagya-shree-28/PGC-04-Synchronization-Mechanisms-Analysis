@@ -176,7 +176,6 @@ cd ~/Exp5_Synchronization
 ls -la
 ```
 
-If you cloned the repository from GitHub, navigate to the directory created by `git clone` instead.
 
 ### 6.3 Compile the Individual Programs
 
@@ -276,7 +275,7 @@ The standalone programs use OpenMP parallel loops. The comparison benchmark expl
 
 ### 7.1 Individual Program Results
 
-The following results were observed in the uploaded execution screenshots.
+The following results were observed.
 
 | Program | Expected result | Observed result | Interpretation |
 |---|---:|---:|---|
@@ -286,11 +285,11 @@ The following results were observed in the uploaded execution screenshots.
 | Barrier | All threads synchronize | Before/after messages displayed | Synchronization point demonstrated |
 | Semaphore | 200,000 | 200,000 | Correct |
 
-*The race-condition screenshot displays `Counter=3620746`. The expected count for the loop shown in that screenshot is `100000000`, not `10000000`; therefore, the result is incorrect.*
+*The race-condition screenshot displays `Counter=3620746`. The expected count for the loop is `100000000`, not `10000000`; therefore, the result is incorrect.*
 
 ### 7.2 Benchmark Results
 
-The following table reproduces the values shown in `comparison.jpeg` inside the uploaded ZIP. The workload is `10000000` shared increments.
+The workload is `10000000` shared increments.
 
 | Mechanism | Threads | Final Count | Correctness | Time (s) |
 |---|---:|---:|---|---:|
@@ -431,4 +430,3 @@ Exp5_Synchronization/
 └── README.md                # Experiment documentation
 ```
 
-*Note: The uploaded ZIP contains the seven JPEG screenshots. The C source files and `results.txt` should be present in your repository if you want the complete runnable structure shown above.*
